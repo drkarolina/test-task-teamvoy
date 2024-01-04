@@ -1,0 +1,22 @@
+require:
+  - 'rubocop-rspec'
+  - 'rubocop-rails'
+
+AllCops: 
+  TargetRubyVersion: 3.0.0 
+  Exclude: 
+    - bin/**
+    - db/**/*
+    - vendor/**/* 
+    - node_modules/**/*
+    - tmp/**/*
+    - config/**/**
+ 
+Layout/LineLength: 
+  Max: 120 
+ 
+Style/FrozenStringLiteralComment: 
+  Enabled: false 
+ 
+Style/Documentation: 
+  Enabled: false 
