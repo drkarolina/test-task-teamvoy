@@ -12,11 +12,12 @@ AllCops:
     - tmp/**/*
     - config/**/**
  
-Layout/LineLength: 
-  Max: 120 
- 
 Style/FrozenStringLiteralComment: 
   Enabled: false 
  
 Style/Documentation: 
   Enabled: false 
+
+Rails/FilePath:
+  Exclude:
+    - spec/rails_helper.rb
