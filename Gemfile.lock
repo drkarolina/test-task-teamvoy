@@ -82,6 +82,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    childprocess (4.1.0)
     colorize (0.8.1)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
@@ -102,6 +103,7 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    iniparse (1.5.0)
     io-console (0.7.1)
     irb (1.11.0)
       rdoc
@@ -110,7 +112,6 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.3)
-    lefthook (1.1.4)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -137,6 +138,10 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
+    overcommit (0.61.0)
+      childprocess (>= 0.6.3, < 5)
+      iniparse (~> 1.4)
+      rexml (~> 3.2)
     parallel (1.23.0)
     parser (3.2.2.1)
       ast (~> 2.4.1)
@@ -276,7 +281,7 @@ DEPENDENCIES
   fasterer
   importmap-rails
   jbuilder
-  lefthook
+  overcommit
   puma (~> 5.0)
   rails (~> 7.0.8)
   redis (~> 4.0)

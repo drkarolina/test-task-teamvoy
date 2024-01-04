@@ -1,0 +1,6 @@
+PreCommit: 
+  RuboCop: 
+    enabled: true 
+ 
+  Fasterer: 
+    enabled: true 

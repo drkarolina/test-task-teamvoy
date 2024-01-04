@@ -17,7 +17,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'fasterer'
-  gem 'lefthook'
+  gem 'overcommit'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-rails', require: false
