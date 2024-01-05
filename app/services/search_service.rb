@@ -37,11 +37,11 @@ class SearchService
   end
 
   def search_data(data_sample)
-    string_data = data_sample.values.join(', ').downcase
+    string_data = data_sample.values.join(' ').downcase
     return if negative_search_fails?(data_sample, string_data)
     return unless positive_search_passed?(data_sample, string_data)
 
-    calculate_score(data_sample, string_data)
+    add_calculated_score(data_sample)
   end
 
   def negative_search_fails?(data_sample, string_data)
@@ -54,9 +54,9 @@ class SearchService
       positive_search.all? { |word| string_data.include?(word) }
   end
 
-  def calculate_score(data_sample, string_data)
-    score_counter = (positive_search & string_data.split(', ')).count
-    data_sample.merge(score: score_counter * EXACT_MATCH_SCORE)
+  def add_calculated_score(data_sample)
+    score = ScoreCalculatorService.calculate(data_sample, positive_search)
+    data_sample.merge(score: score)
   end
 
   def includes_word?(data_sample, word)
