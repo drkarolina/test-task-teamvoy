@@ -13,14 +13,9 @@ export default class extends Controller {
       clearTimeout(timer);
 
       timer = setTimeout(() => {
-        doneTyping(event.target.value);
         sendSearchRequest(event.target.value);
       }, waitTime);
     });
-
-    function doneTyping(value) {
-      console.log(`The user is done typing: ${value}`);
-    }
 
     function sendSearchRequest(value) {
       fetch('/search', {
