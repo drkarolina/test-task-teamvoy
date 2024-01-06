@@ -1,0 +1,13 @@
+.search-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.text-field {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 400px;
+  margin-right: 10px;
+  font-size: 22px;
+}

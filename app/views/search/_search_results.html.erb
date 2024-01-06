@@ -1,0 +1,16 @@
+<%= turbo_frame_tag 'results' do %>
+  <div class="results-container">
+    <% if results %>
+      <h2>Search Results (<%= counter %>)</h2>
+      <% results.each do |result| %>
+        <div class="card">
+          <ul>
+            <% result.each do |key, value| %>
+              <li><strong><%= key %>:</strong> <%= value %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

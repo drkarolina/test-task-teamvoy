@@ -1,21 +1,2 @@
-<div class="search-container">
-  <%= form_tag(root_path, method: "get") do %>
-    <%= text_field_tag :query, params[:query], placeholder: "Enter your search query", class: 'text-field' %>
-    <%= submit_tag "Search", class: 'submit-btn' %>
-  <% end %>
-</div>
-
-<div class="results-container">
-  <% if @results_presenter %>
-    <h2>Search Results (<%= @results_presenter.results_count %>)</h2>
-    <% @results_presenter.results.each do |result| %>
-      <div class="card">
-        <ul>
-          <% result.each do |key, value| %>
-            <li><strong><%= key %>:</strong> <%= value %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+<%= render "search_form" %>
+<%= render "search_results", results: @results_presenter.results, counter: @results_presenter.results_count %>
