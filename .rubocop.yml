@@ -21,3 +21,6 @@ Style/Documentation:
 Rails/FilePath:
   Exclude:
     - spec/rails_helper.rb
+
+Spec/ExampleLength:
+  Enabled: false
