@@ -1,7 +1,7 @@
 class SearchService
   def initialize(params, data)
     @data = data
-    parse_query(params[:query].downcase)
+    @query_words = QueryWordsService.new(params[:query].downcase)
   end
 
   def call
@@ -11,30 +11,7 @@ class SearchService
 
   private
 
-  attr_reader :data, :negative_search, :positive_search, :exact_search, :negative_exact_search
-
-  def parse_query(query)
-    @positive_search = parse_positive_search(query)
-    @negative_search = parse_negative_search(query)
-    @exact_search = parse_exact_search(query)
-    @negative_exact_search = parse_negative_exact_search(query)
-  end
-
-  def parse_positive_search(query)
-    query.scan(POSITIVE_SEARCH_QUERY_REGEX)
-  end
-
-  def parse_negative_search(query)
-    query.scan(NEGATIVE_SEARCH_QUERY_REGEX)
-  end
-
-  def parse_exact_search(query)
-    query.scan(EXACT_SEARCH_QUERY_REGEX).flatten
-  end
-
-  def parse_negative_exact_search(query)
-    query.scan(EXACT_NEGATIVE_SEARCH_QUERY_REGEX).flatten
-  end
+  attr_reader :data, :query_words
 
   def search_data(data_sample)
     string_data = data_sample.values.join(' ').downcase
@@ -45,17 +22,17 @@ class SearchService
   end
 
   def negative_search_fails?(data_sample, string_data)
-    negative_search.any? { |word| string_data.include?(word) } ||
-      negative_exact_search.any? { |word| includes_word?(data_sample, word) }
+    query_words.negative_search.any? { |word| string_data.include?(word) } ||
+      query_words.negative_exact_search.any? { |word| includes_word?(data_sample, word) }
   end
 
   def positive_search_passed?(data_sample, string_data)
-    exact_search.all? { |word| includes_word?(data_sample, word) } &&
-      positive_search.all? { |word| string_data.include?(word) }
+    query_words.exact_search.all? { |word| includes_word?(data_sample, word) } &&
+      query_words.positive_search.all? { |word| string_data.include?(word) }
   end
 
   def add_calculated_score(data_sample)
-    score = ScoreCalculatorService.calculate(data_sample, positive_search)
+    score = ScoreCalculatorService.calculate(data_sample, query_words.positive_search)
     data_sample.merge(score: score)
   end
 

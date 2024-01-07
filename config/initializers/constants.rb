@@ -1,6 +1,6 @@
 EXACT_MATCH_SCORE = 1
-POSITIVE_SEARCH_QUERY_REGEX = /\b(?<!-)(?<!")\w+(?!")\b/
-NEGATIVE_SEARCH_QUERY_REGEX = /(?<=-)(?!")\S+/
+POSITIVE_SEARCH_QUERY_REGEX = /\b(?<!-)\w+\S+/
+NEGATIVE_SEARCH_QUERY_REGEX = /(?<=-)\S+/
 EXACT_SEARCH_QUERY_REGEX = /(?<=\s|\A)"(.*?)"/
 EXACT_NEGATIVE_SEARCH_QUERY_REGEX = /-"(.*?)"/
 JSON_FILE_PATH = 'db/data.json'
