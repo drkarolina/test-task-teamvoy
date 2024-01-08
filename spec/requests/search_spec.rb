@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe 'Search', type: :request do
   let(:data) do
-    [{ 'Name' => 'A+',
-       'Type' => 'Array',
-       'Designed by' => 'Arthur Whitney' },
-     { 'Name' => 'ActionScript',
-       'Type' => 'Compiled, Curly-bracket, Procedural, Reflective, Scripting, Object-oriented class-based',
-       'Designed by' => 'Gary Grossman' }]
+    [{ NAME => 'A+',
+       TYPE => 'Array',
+       DESIGNED_BY => 'Arthur Whitney' },
+     { NAME => 'ActionScript',
+       TYPE => 'Compiled, Curly-bracket, Procedural, Reflective, Scripting, Object-oriented class-based',
+       DESIGNED_BY => 'Gary Grossman' }]
   end
   let(:base_url) { '/' }
 

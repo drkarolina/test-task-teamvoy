@@ -10,10 +10,10 @@ class SearchController < ApplicationController
   private
 
   def results_presenter
-    @results_presenter ||= ResultsPresenter.new(search_rusults)
+    @results_presenter ||= ResultsPresenter.new(search_results)
   end
 
-  def search_rusults
+  def search_results
     return data if search_params[:query].blank?
 
     SearchService.new(search_params, data).call

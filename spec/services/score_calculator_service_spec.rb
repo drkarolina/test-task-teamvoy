@@ -2,21 +2,22 @@ require 'rails_helper'
 
 RSpec.describe ScoreCalculatorService do
   let(:data_sample_without_exact_match) do
-    { 'Name' => 'A+',
-      'Type' => 'Array',
-      'Designed by' => 'Microsoft Whitney' }
+    { NAME => 'New name',
+      TYPE => 'Array',
+      DESIGNED_BY => 'Microsoft Whitney' }
   end
   let(:data_sample_with_exact_match) do
-    { 'Name' => 'A+',
-      'Type' => 'Array',
-      'Designed by' => 'Microsoft' }
+    { NAME => 'Name new',
+      TYPE => 'Array',
+      DESIGNED_BY => 'Microsoft' }
   end
   let(:searched_word) { ['microsoft'] }
+  let(:searched_name) { %w[name new] }
 
-  describe '#calculate' do
+  describe '#call' do
     context 'without exact macth' do
       let(:result) do
-        described_class.calculate(data_sample_without_exact_match, searched_word)
+        described_class.new(data_sample_without_exact_match, searched_word).call
       end
 
       it 'returns 0' do
@@ -24,9 +25,19 @@ RSpec.describe ScoreCalculatorService do
       end
     end
 
+    context 'with macth in name' do
+      let(:result) do
+        described_class.new(data_sample_with_exact_match, searched_name).call
+      end
+
+      it 'returns 6' do
+        expect(result).to eq(6)
+      end
+    end
+
     context 'with exact macth' do
       let(:result) do
-        described_class.calculate(data_sample_with_exact_match, searched_word)
+        described_class.new(data_sample_with_exact_match, searched_word).call
       end
 
       it 'returns 1' do

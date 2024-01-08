@@ -18,7 +18,7 @@ RSpec.describe SearchService do
       end
 
       it 'matches a programming language named Common Lisp' do
-        expect(result.first['Name']).to eq('Common Lisp')
+        expect(result.first[NAME]).to eq('Common Lisp')
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe SearchService do
       end
 
       it 'matches a programming language named BASIC and not Haskell' do
-        expect(result.first['Name']).to eq('BASIC')
+        expect(result.first[NAME]).to eq('BASIC')
       end
     end
 
@@ -44,7 +44,7 @@ RSpec.describe SearchService do
       end
 
       it 'matches a programming languages named JScript, VBScript, Windows, PowerShell and not C#' do
-        found_results = result.map { |hash| hash['Name'] }
+        found_results = result.map { |hash| hash[NAME] }
         expect(found_results).to eq(expected_result)
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe SearchService do
       end
 
       it 'matches a programming languages "BASIC", "Haskell", "Lisp" and "S-Lang"' do
-        found_results = result.map { |hash| hash['Name'] }
+        found_results = result.map { |hash| hash[NAME] }
         expect(found_results).to eq(expected_result)
       end
     end
