@@ -24,6 +24,3 @@ Rails/FilePath:
 
 Spec/ExampleLength:
   Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
-  Max: 6

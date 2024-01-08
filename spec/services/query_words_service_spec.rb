@@ -5,33 +5,19 @@ RSpec.describe QueryWordsService do
     '-nagative "quotation marks" positive -morenegative "exact search quotation marks"
      -"negative exact search quotation marks" pluspositive'
   end
-  let(:positive_search) { %w[positive pluspositive] }
-  let(:negative_search) { %w[nagative morenegative] }
-  let(:exact_search) { ['quotation marks', 'exact search quotation marks'] }
-  let(:negative_exact_search) { ['negative exact search quotation marks'] }
+  let(:negative_search_words) { ['negative exact search quotation marks', 'nagative', 'morenegative'] }
+  let(:positive_search_words) { ['quotation marks', 'exact search quotation marks', 'positive', 'pluspositive'] }
   let(:instance) { described_class.new(query) }
 
-  describe '#exact_search' do
-    it 'returns words array for exact search' do
-      expect(instance.exact_search).to eq(exact_search)
+  describe '#negative_search_words' do
+    it 'returns words array for negative search' do
+      expect(instance.negative_search_words).to eq(negative_search_words)
     end
   end
 
-  describe '#negative_exact_search' do
-    it 'returns words array for exact search' do
-      expect(instance.negative_exact_search).to eq(negative_exact_search)
-    end
-  end
-
-  describe '#positive_search' do
-    it 'returns words array for exact search' do
-      expect(instance.positive_search).to eq(positive_search)
-    end
-  end
-
-  describe '#negative_search' do
-    it 'returns words array for exact search' do
-      expect(instance.negative_search).to eq(negative_search)
+  describe '#positive_search_words' do
+    it 'returns words array for positive search' do
+      expect(instance.positive_search_words).to eq(positive_search_words)
     end
   end
 end
